@@ -1,0 +1,8 @@
+CPP_FILES := $(wildcard *.c)
+OBJ_FILES := $(notdir $(CPP_FILES:.c=.o))
+
+main.exe: $(OBJ_FILES)
+	g++ $(CD_FLAGS) -o $@ $^
+
+%.o: %.c
+	g++ $(CC_FLAGS) -c -o $@ $<
