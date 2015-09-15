@@ -1,8 +1,6 @@
-CPP_FILES := $(wildcard *.c)
-OBJ_FILES := $(notdir $(CPP_FILES:.c=.o))
+all: dmtx.o 
+	gcc -o dmt dmtx.o main.c -lm
 
-main.exe: $(OBJ_FILES)
-	g++ $(CD_FLAGS) -o $@ $^
+dmtx.o:
+	gcc -c dmtx.c
 
-%.o: %.c
-	g++ $(CC_FLAGS) -c -o $@ $<
