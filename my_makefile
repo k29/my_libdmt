@@ -1,6 +1,5 @@
-all: dmtx.o 
-	gcc -o dmt dmtx.o main.c -lm
+all: dmtx.o
+	g++ -Wall -g -o dmt dmtx.o main.cpp 
 
 dmtx.o:
-	gcc -c dmtx.c
-
+	gcc -g -c dmtx.c
