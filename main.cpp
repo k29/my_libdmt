@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
 
   unsigned char* pix;
   ifstream::pos_type size;
-
+  int n;
   ifstream file ("THC.dat", ios::in|ios::binary|ios::ate);
   if (file.is_open())
   {
@@ -25,23 +25,25 @@ int main(int argc, char const *argv[])
     pix = new unsigned char [size];
     file.seekg (0, ios::beg);
     file.read ((char*)pix, size); // cast to a char* to give to file.read
-
-    for (int l=0; l<size; l++)
-    {
-      cout <<  (int)pix[l] << endl;
-    }
+    // for (int l=0; l<size; l++)
+    // {
+    //   cout <<  (int)pix[l] << endl;
+    // }
+    n=size;
     file.close();
-    delete[] pix;
+    // delete[] pix;
   }
   else
   cout << "Unable to open file";
 
-
-
+  for(int i=0;i<n;i++)
+  {
+    cout<<(int)pix[i]<<endl;
+  }
 
 
   /*Creates and Initializes a new DmtxImage structure using pixel data passed as a parameter.*/
-  img = dmtxImageCreate(pix,DMT_IMAGE_WIDTH, DMT_IMAGE_HEIGHT, DmtxPack16bppRGB);
+  img = dmtxImageCreate(pix,DMT_IMAGE_WIDTH, DMT_IMAGE_HEIGHT, DmtxPack8bppK);
   if(img == NULL)
   {
     printf("dmtxImageCreate returned NULL\n");
