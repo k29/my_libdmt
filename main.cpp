@@ -21,7 +21,6 @@ int main(int argc, char const *argv[])
 
   unsigned char* pix;
   ifstream::pos_type size;
-  int n;
   ifstream file ("THC(1).dat", ios::in|ios::binary|ios::ate);
   if (file.is_open())
   {
@@ -29,16 +28,16 @@ int main(int argc, char const *argv[])
     pix = new unsigned char [size];
     file.seekg (0, ios::beg);
     file.read ((char*)pix, size); // cast to a char* to give to file.read
-    n=size;
+    // n=size;
     file.close();
   }
   else
   cout << "Unable to open file";
 
-  for(int i=0;i<n;i++)
-  {
-    cout<<(int)pix[i]<<endl;
-  }
+  // for(int i=0;i<n;i++)
+  // {
+  //   cout<<(int)pix[i]<<endl;
+  // }`
 
   start=clock();
 
