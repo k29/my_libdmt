@@ -1,16 +1,3 @@
-/**
- * libdmtx - Data Matrix Encoding/Decoding Library
- * Copyright 2008, 2009 Mike Laughton. All rights reserved.
- *
- * See LICENSE file in the main project directory for full
- * terms of use and distribution.
- *
- * Contact: Mike Laughton <mike@dragonflylogic.com>
- *
- * \file dmtxstatic.h
- * \brief Static header
- */
-
 #ifndef __DMTXSTATIC_H__
 #define __DMTXSTATIC_H__
 
@@ -54,12 +41,6 @@
 
 #undef max
 #define max(X,Y) (((X) > (Y)) ? (X) : (Y))
-
-// typedef enum {
-//    DmtxEncodeNormal,  /* Use normal scheme behavior (e.g., ASCII auto) */
-//    DmtxEncodeCompact, /* Use only compact format within scheme */
-//    DmtxEncodeFull     /* Use only fully expanded format within scheme */
-// } DmtxEncodeOption;
 
 typedef enum {
    DmtxRangeGood,
@@ -165,10 +146,6 @@ static unsigned char *DecodeSchemeX12(DmtxMessage *msg, unsigned char *ptr, unsi
 static unsigned char *DecodeSchemeEdifact(DmtxMessage *msg, unsigned char *ptr, unsigned char *dataEnd);
 static unsigned char *DecodeSchemeBase256(DmtxMessage *msg, unsigned char *ptr, unsigned char *dataEnd);
 
-// /* dmtxencode.c */
-// static void PrintPattern(DmtxEncode *encode);
-// static int EncodeDataCodewords(DmtxByteList *input, DmtxByteList *output, int sizeIdxRequest, DmtxScheme scheme);
-
 /* dmtxplacemod.c */
 static int ModulePlacementEcc200(unsigned char *modules, unsigned char *codewords, int sizeIdx, int moduleOnColor);
 static void PatternShapeStandard(unsigned char *modules, int mappingRows, int mappingCols, int row, int col, unsigned char *codeword, int moduleOnColor);
@@ -200,72 +177,7 @@ static int FindSymbolSize(int dataWords, int sizeIdxRequest);
 /* dmtximage.c */
 static int GetBitsPerPixel(int pack);
 
-// /* dmtxencodestream.c */
-// static DmtxEncodeStream StreamInit(DmtxByteList *input, DmtxByteList *output);
-// static void StreamCopy(DmtxEncodeStream *dst, DmtxEncodeStream *src);
-// static void StreamMarkComplete(DmtxEncodeStream *stream, int sizeIdx);
-// static void StreamMarkInvalid(DmtxEncodeStream *stream, int reasonIdx);
-// static void StreamMarkFatal(DmtxEncodeStream *stream, int reasonIdx);
-// static void StreamOutputChainAppend(DmtxEncodeStream *stream, DmtxByte value);
-// static DmtxByte StreamOutputChainRemoveLast(DmtxEncodeStream *stream);
-// static void StreamOutputSet(DmtxEncodeStream *stream, int index, DmtxByte value);
-// static DmtxBoolean StreamInputHasNext(DmtxEncodeStream *stream);
-// static DmtxByte StreamInputPeekNext(DmtxEncodeStream *stream);
-// static DmtxByte StreamInputAdvanceNext(DmtxEncodeStream *stream);
-// static void StreamInputAdvancePrev(DmtxEncodeStream *stream);
 
-// /* dmtxencodescheme.c */
-// static int EncodeSingleScheme(DmtxByteList *input, DmtxByteList *output, int sizeIdxRequest, DmtxScheme scheme);
-// static void EncodeNextChunk(DmtxEncodeStream *stream, int scheme, int subScheme, int sizeIdxRequest);
-// static void EncodeChangeScheme(DmtxEncodeStream *stream, DmtxScheme targetScheme, int unlatchType);
-// static int GetRemainingSymbolCapacity(int outputLength, int sizeIdx);
-//
-// /* dmtxencodeoptimize.c */
-// static int EncodeOptimizeBest(DmtxByteList *input, DmtxByteList *output, int sizeIdxRequest);
-// static void StreamAdvanceFromBest(DmtxEncodeStream *streamNext,
-//       DmtxEncodeStream *streamList, int targeteState, int sizeIdxRequest);
-// static void AdvanceAsciiCompact(DmtxEncodeStream *streamNext, DmtxEncodeStream *streamList,
-//       int state, int inputNext, int sizeIdxRequest);
-// static void AdvanceCTX(DmtxEncodeStream *streamNext, DmtxEncodeStream *streamList,
-//       int state, int inputNext, int ctxValueCount, int sizeIdxRequest);
-// static void AdvanceEdifact(DmtxEncodeStream *streamNext, DmtxEncodeStream *streamList,
-//       int state, int inputNext, int sizeIdxRequest);
-// static int GetScheme(int state);
-// static DmtxBoolean ValidStateSwitch(int fromState, int targetState);
-//
-// /* dmtxencodeascii.c */
-// static void EncodeNextChunkAscii(DmtxEncodeStream *stream, int option);
-// static void AppendValueAscii(DmtxEncodeStream *stream, DmtxByte value);
-// static void CompleteIfDoneAscii(DmtxEncodeStream *stream, int sizeIdxRequest);
-// static void PadRemainingInAscii(DmtxEncodeStream *stream, int sizeIdx);
-// static DmtxByteList EncodeTmpRemainingInAscii(DmtxEncodeStream *stream, DmtxByte *storage, int capacity, DmtxPassFail *passFail);
-// static DmtxByte Randomize253State(DmtxByte cwValue, int cwPosition);
-//
-// /* dmtxencodec40textx12.c */
-// static void EncodeNextChunkCTX(DmtxEncodeStream *stream, int sizeIdxRequest);
-// static void AppendValuesCTX(DmtxEncodeStream *stream, DmtxByteList *valueList);
-// static void AppendUnlatchCTX(DmtxEncodeStream *stream);
-// static void CompleteIfDoneCTX(DmtxEncodeStream *stream, int sizeIdxRequest);
-// static void CompletePartialC40Text(DmtxEncodeStream *stream, DmtxByteList *valueList, int sizeIdxRequest);
-// static void CompletePartialX12(DmtxEncodeStream *stream, DmtxByteList *valueList, int sizeIdxRequest);
-// static DmtxBoolean PartialX12ChunkRemains(DmtxEncodeStream *stream);
-// static void PushCTXValues(DmtxByteList *valueList, DmtxByte inputValue, int targetScheme, DmtxPassFail *passFail);
-// static DmtxBoolean IsCTX(int scheme);
-// static void ShiftValueListBy3(DmtxByteList *list, DmtxPassFail *passFail);
-//
-// /* dmtxencodeedifact.c */
-// static void EncodeNextChunkEdifact(DmtxEncodeStream *stream);
-// static void AppendValueEdifact(DmtxEncodeStream *stream, DmtxByte value);
-// static void CompleteIfDoneEdifact(DmtxEncodeStream *stream, int sizeIdxRequest);
-//
-// /* dmtxencodebase256.c */
-// static void EncodeNextChunkBase256(DmtxEncodeStream *stream);
-// static void AppendValueBase256(DmtxEncodeStream *stream, DmtxByte value);
-// static void CompleteIfDoneBase256(DmtxEncodeStream *stream, int sizeIdxRequest);
-// static void UpdateBase256ChainHeader(DmtxEncodeStream *stream, int perfectSizeIdx);
-// static void Base256OutputChainInsertFirst(DmtxEncodeStream *stream);
-// static void Base256OutputChainRemoveFirst(DmtxEncodeStream *stream);
-// static DmtxByte Randomize255State(DmtxByte cwValue, int cwPosition);
 static unsigned char UnRandomize255State(unsigned char value, int idx);
 
 static const int dmtxNeighborNone = 8;

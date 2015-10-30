@@ -1,16 +1,3 @@
-/**
- * libdmtx - Data Matrix Encoding/Decoding Library
- * Copyright 2008, 2009 Mike Laughton. All rights reserved.
- *
- * See LICENSE file in the main project directory for full
- * terms of use and distribution.
- *
- * Contact: Mike Laughton <mike@dragonflylogic.com>
- *
- * \file dmtx.h
- * \brief Main libdmtx header
- */
-
 #ifndef __DMTX_H__
 #define __DMTX_H__
 
@@ -264,19 +251,7 @@ struct DmtxByteList_struct
    DmtxByte *b;
 };
 
-// typedef struct DmtxEncodeStream_struct DmtxEncodeStream;
-// struct DmtxEncodeStream_struct
-// {
-//    int currentScheme;         /* Current encodation scheme */
-//    int inputNext;             /* Index of next unprocessed input word in queue */
-//    int outputChainValueCount; /* Count of output values pushed within current scheme chain */
-//    int outputChainWordCount;  /* Count of output words pushed within current scheme chain */
-//    char *reason;              /* Reason for status */
-//    int sizeIdx;               /* Symbol size of completed stream */
-//    DmtxStatus status;
-//    DmtxByteList *input;
-//    DmtxByteList *output;
-// };
+
 
 /**
  * @struct DmtxImage
@@ -459,25 +434,7 @@ typedef struct DmtxDecode_struct {
    DmtxScanGrid    grid;
 } DmtxDecode;
 
-/**
- * @struct DmtxEncode
- * @brief DmtxEncode
- */
-// typedef struct DmtxEncode_struct {
-//    int             method;
-//    int             scheme;
-//    int             sizeIdxRequest;
-//    int             marginSize;
-//    int             moduleSize;
-//    int             pixelPacking;
-//    int             imageFlip;
-//    int             rowPadBytes;
-//    DmtxMessage    *message;
-//    DmtxImage      *image;
-//    DmtxRegion      region;
-//    DmtxMatrix3     xfrm;  /* XXX still necessary? */
-//    DmtxMatrix3     rxfrm; /* XXX still necessary? */
-// } DmtxEncode;
+
 
 /**
  * @struct DmtxChannel
@@ -524,13 +481,6 @@ extern DmtxTime dmtxTimeNow(void);
 extern DmtxTime dmtxTimeAdd(DmtxTime t, long msec);
 extern int dmtxTimeExceeded(DmtxTime timeout);
 
-// /* dmtxencode.c */
-// extern DmtxEncode *dmtxEncodeCreate(void);
-// extern DmtxPassFail dmtxEncodeDestroy(DmtxEncode **enc);
-// extern DmtxPassFail dmtxEncodeSetProp(DmtxEncode *enc, int prop, int value);
-// extern int dmtxEncodeGetProp(DmtxEncode *enc, int prop);
-// extern DmtxPassFail dmtxEncodeDataMatrix(DmtxEncode *enc, int n, unsigned char *s);
-// extern DmtxPassFail dmtxEncodeDataMosaic(DmtxEncode *enc, int n, unsigned char *s);
 
 /* dmtxdecode.c */
 extern DmtxDecode *dmtxDecodeCreate(DmtxImage *img, int scale);
